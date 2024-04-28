@@ -11,6 +11,4 @@ const storeData = async (key, value) => {
 
 export const storeTokenAndNavigateToMainPage = async (token) => {
     await storeData('token', token);
-    const navigation = useNavigation();
-    navigation.navigate('Home');
 };

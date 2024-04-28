@@ -3,18 +3,20 @@ import * as React from 'react';
 import { loginUser } from '../modules/login';
 import { storeTokenAndNavigateToMainPage } from '../modules/token';
 import {useState} from "react";
+import {useNavigation} from "@react-navigation/native";
 
-const LoginScreen = () => {
+const LoginScreen = ({ navigation }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
     const handleLogin = async () => {
-        const token = await loginUser(username, password);
-        if (token.token) {
-            await storeTokenAndNavigateToMainPage(token);
-
+        const response = await loginUser(username, password);
+        //console.log(response.data.data.token)
+        if (response.data.data.token) {
+            await storeTokenAndNavigateToMainPage(response.data.data.token);
+            navigation.navigate('Home');
         } else {
-            console.log("HATA")
+            console.log(response.data)
         }
     };
 
