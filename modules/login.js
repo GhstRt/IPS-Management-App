@@ -1,5 +1,5 @@
 import axios from 'axios';
-const API_URL = 'http://ec2-54-93-240-170.eu-central-1.compute.amazonaws.com/api';
+const API_URL = 'http://10.0.2.2:8000/api';
 
 const loginUser = async (username, password) => {
     try {

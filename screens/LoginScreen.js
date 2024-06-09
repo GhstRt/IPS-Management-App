@@ -3,7 +3,6 @@ import * as React from 'react';
 import { loginUser } from '../modules/login';
 import { storeTokenAndNavigateToMainPage } from '../modules/token';
 import {useState} from "react";
-import {useNavigation} from "@react-navigation/native";
 
 const LoginScreen = ({ navigation }) => {
     const [username, setUsername] = useState('');
@@ -14,7 +13,7 @@ const LoginScreen = ({ navigation }) => {
         //console.log(response.data.data.token)
         if (response.data.data.token) {
             await storeTokenAndNavigateToMainPage(response.data.data.token);
-            navigation.navigate('Home');
+            navigation.navigate('drawer');
         } else {
             console.log(response.data)
         }
